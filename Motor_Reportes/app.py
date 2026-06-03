@@ -1,9 +1,16 @@
+import sys
+import os
+
+# Asegurar que el directorio actual está en el path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, current_dir)
+sys.path.insert(0, os.path.join(current_dir, 'backend'))
+
 from flask import Flask, render_template, request, jsonify
-# Importación de las clases lógicas modularizadas del compilador en español
-from backend.lexer import AnalizadorLexicoVulnerabilidades
-from backend.parser import AnalizadorSintacticoVulnerabilidades
-from backend.semantic import AnalizadorSemanticoVulnerabilidades
-from backend.output_gen import GeneradorMitigacion
+from lexer import AnalizadorLexicoVulnerabilidades
+from parser import AnalizadorSintacticoVulnerabilidades
+from semantic import AnalizadorSemanticoVulnerabilidades
+from output_gen import GeneradorMitigacion
 
 app = Flask(
     __name__,
